@@ -214,8 +214,9 @@ public class ManuaApi {
 //        });
     }
 
-    public void openManua(Context context) {
+    public void openManua(Context context, String carModel) {
         Intent intent = new Intent(context, ManuaWelecomActivity.class);
+        intent.putExtra("carModel",carModel);
         context.startActivity(intent);
     }
 }

@@ -33,6 +33,9 @@ public class ManuaWelecomActivity extends BaseActivity {
         LogUtil.logError("android.os.Build.VERSION.RELEASE = " + android.os.Build.VERSION.RELEASE);
 
         setContentView(R.layout.activity_welecom);
+        if (getIntent() != null && getIntent().getStringExtra("carModel") != null) {
+            SharedpreferencesUtil.setCarModel(this, getIntent().getStringExtra("carModel"));
+        }
         int currentapiVersion = android.os.Build.VERSION.SDK_INT;
         if (currentapiVersion >= 23) {
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
@@ -142,15 +145,15 @@ public class ManuaWelecomActivity extends BaseActivity {
 
     private void goNext() {
         boolean isFirst = SharedpreferencesUtil.getIsFirst(ManuaWelecomActivity.this);
-        if (!isFirst) {
-            Intent intent = new Intent(ManuaWelecomActivity.this, ManualWebActivity.class);
-            startActivity(intent);
-            finish();
-        } else {
-            Intent intent = new Intent(ManuaWelecomActivity.this, ManualSelecteCarActivity.class);
-            startActivity(intent);
-            finish();
-        }
+//        if (!isFirst) {
+        Intent intent = new Intent(ManuaWelecomActivity.this, ManualWebActivity.class);
+        startActivity(intent);
+        finish();
+//        } else {
+//            Intent intent = new Intent(ManuaWelecomActivity.this, ManualSelecteCarActivity.class);
+//            startActivity(intent);
+//            finish();
+//        }
     }
 
     Handler handler = new Handler() {
@@ -171,7 +174,7 @@ public class ManuaWelecomActivity extends BaseActivity {
                     next.setText("剩余" + time + "秒 跳过>");
                 }
                 time--;
-                handler.sendEmptyMessageDelayed(100001,1000);
+                handler.sendEmptyMessageDelayed(100001, 1000);
             }
         }
     };

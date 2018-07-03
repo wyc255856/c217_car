@@ -11,7 +11,7 @@
         android:id="@+id/progress_bar"
         android:layout_width="25dip"
         android:layout_height="25dip"
-        android:background="@mipmap/loading1"
+        android:background="@mipmap/m_loading1"
         android:visibility="gone" />
 
     <!--
