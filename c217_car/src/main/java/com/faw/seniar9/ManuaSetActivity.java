@@ -39,7 +39,6 @@ import com.wyc.c217_car.R;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.charset.Charset;
 
 //import cn.finalteam.okhttpfinal.OkHttpFinal;
 //import cn.finalteam.okhttpfinal.OkHttpFinalConfiguration;
@@ -84,7 +83,7 @@ public class ManuaSetActivity extends Activity {
 //        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.HONEYCOMB){
 //            webView.setLayerType(View.LAYER_TYPE_SOFTWARE,null);
 //        }
-        setContentView(R.layout.activity_web);
+        setContentView(R.layout.activity_m_web);
         entry = new DownloadEntry(ManuaConfig.getManuaDownLoadUrl(this));
         DownloadConfig.DOWNLOAD_PATH = LibIOUtil.getDefaultPath(this);
 

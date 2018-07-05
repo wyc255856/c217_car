@@ -20,7 +20,6 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.baidu.che.codriversdk.manager.CdCarInfoQueryManager;
 import com.faw.seniar9.util.LibIOUtil;
@@ -90,7 +89,7 @@ public class ManualWebActivity extends Activity {
         //隐藏标题栏
 //        ActionBar actionBar = getSupportActionBar();
 //        actionBar.hide();
-        setContentView(R.layout.activity_web);
+        setContentView(R.layout.activity_m_web);
 //        LogUtil.logError("============isServiceRunning==============");
 //        Intent i = new Intent();
 //        i.setClass(this, TargetService.class);
