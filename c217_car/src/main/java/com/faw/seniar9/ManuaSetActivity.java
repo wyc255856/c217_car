@@ -36,9 +36,9 @@ import com.gh.ghdownload.entity.DownloadEntry;
 import com.gh.ghdownload.notify.DataWatcher;
 import com.wyc.c217_car.R;
 
-import org.zeroturnaround.zip.ZipUtil;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.charset.Charset;
 
 //import cn.finalteam.okhttpfinal.OkHttpFinal;
@@ -377,28 +377,35 @@ public class ManuaSetActivity extends Activity {
                         if (!saveFile.exists()) {
                             return;
                         }
-                        ZipUtil.unpack(saveFile, new File(LibIOUtil.getDefaultPath(context)), Charset.forName("GBK"));
-                        ((Activity) context).runOnUiThread(new Runnable() {
+//                        ZipUtil.unpack(saveFile, new File(LibIOUtil.getDefaultPath(context)), Charset.forName("GBK"));
+                        try {
+                            ManualWebActivity.unZipFiles(saveFile,LibIOUtil.getDefaultPath(context));
+                            ((Activity) context).runOnUiThread(new Runnable() {
 
-                            @Override
-                            public void run() {
-                                // TODO Auto-generated method stub
-                                downLoad_progress.setProgress(100);
-                                progress_text.setText("100%");
-                                downLoad_view.setVisibility(View.GONE);
-                                SharedpreferencesUtil.setHaveLocal(ManualWebActivity.context, "1");
-                                SharedpreferencesUtil.setModelLocal(context, SharedpreferencesUtil.getCarModel(context));
-                                SharedpreferencesUtil.setCarMode(context, "0");
-                                SharedpreferencesUtil.setVersion(context, ManuaConfig.VERSION);
-                                saveFile.delete();
-                                Intent intent = new Intent(ManuaSetActivity.context, ManualWebActivity.class);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                                ManuaSetActivity.context.startActivity(intent);
-                                ManuaSetActivity.context.finish();
-                                Toast.makeText(context, "下载成功", Toast.LENGTH_SHORT).show();
-                                SharedpreferencesUtil.setCarMode(context, "0");
-                            }
-                        });
+                                @Override
+                                public void run() {
+                                    // TODO Auto-generated method stub
+                                    downLoad_progress.setProgress(100);
+                                    progress_text.setText("100%");
+                                    downLoad_view.setVisibility(View.GONE);
+                                    SharedpreferencesUtil.setHaveLocal(ManualWebActivity.context, "1");
+                                    SharedpreferencesUtil.setModelLocal(context, SharedpreferencesUtil.getCarModel(context));
+                                    SharedpreferencesUtil.setCarMode(context, "0");
+                                    SharedpreferencesUtil.setVersion(context, ManuaConfig.VERSION);
+                                    saveFile.delete();
+                                    Intent intent = new Intent(ManuaSetActivity.context, ManualWebActivity.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                                    ManuaSetActivity.context.startActivity(intent);
+                                    ManuaSetActivity.context.finish();
+                                    Toast.makeText(context, "下载成功", Toast.LENGTH_SHORT).show();
+                                    SharedpreferencesUtil.setCarMode(context, "0");
+                                }
+                            });
+
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+
                     }
                 }).start();
             } else {
@@ -434,30 +441,35 @@ public class ManuaSetActivity extends Activity {
                         if (!saveFile.exists()) {
                             return;
                         }
+                        try {
+                            ManualWebActivity.unZipFiles(saveFile,LibIOUtil.getDefaultPath(context));
+                            ((Activity) context).runOnUiThread(new Runnable() {
 
+                                @Override
+                                public void run() {
+                                    // TODO Auto-generated method stub
+                                    downLoad_progress.setProgress(100);
+                                    progress_text.setText("100%");
+                                    downLoad_view.setVisibility(View.GONE);
+                                    SharedpreferencesUtil.setHaveLocal(ManualWebActivity.context, "1");
+                                    SharedpreferencesUtil.setModelLocal(context, SharedpreferencesUtil.getCarModel(context));
+                                    SharedpreferencesUtil.setCarMode(context, "0");
+                                    SharedpreferencesUtil.setVersion(context, ManuaConfig.VERSION);
+                                    saveFile.delete();
+                                    Intent intent = new Intent(ManuaSetActivity.context, ManualWebActivity.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                                    ManuaSetActivity.context.startActivity(intent);
+                                    ManuaSetActivity.context.finish();
+                                    Toast.makeText(context, "下载成功", Toast.LENGTH_SHORT).show();
+                                    SharedpreferencesUtil.setCarMode(context, "0");
+                                }
+                            });
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
 
-                        ZipUtil.unpack(saveFile, new File(LibIOUtil.getDefaultPath(context)), Charset.forName("GBK"));
-                        ((Activity) context).runOnUiThread(new Runnable() {
+//                        ZipUtil.unpack(saveFile, new File(LibIOUtil.getDefaultPath(context)), Charset.forName("GBK"));
 
-                            @Override
-                            public void run() {
-                                // TODO Auto-generated method stub
-                                downLoad_progress.setProgress(100);
-                                progress_text.setText("100%");
-                                downLoad_view.setVisibility(View.GONE);
-                                SharedpreferencesUtil.setHaveLocal(ManualWebActivity.context, "1");
-                                SharedpreferencesUtil.setModelLocal(context, SharedpreferencesUtil.getCarModel(context));
-                                SharedpreferencesUtil.setCarMode(context, "0");
-                                SharedpreferencesUtil.setVersion(context, ManuaConfig.VERSION);
-                                saveFile.delete();
-                                Intent intent = new Intent(ManuaSetActivity.context, ManualWebActivity.class);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                                ManuaSetActivity.context.startActivity(intent);
-                                ManuaSetActivity.context.finish();
-                                Toast.makeText(context, "下载成功", Toast.LENGTH_SHORT).show();
-                                SharedpreferencesUtil.setCarMode(context, "0");
-                            }
-                        });
                     }
                 }).start();
             } else {
