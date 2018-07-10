@@ -216,7 +216,27 @@ public class ManuaApi {
 
     public void openManua(Context context, String carModel) {
         Intent intent = new Intent(context, ManuaWelecomActivity.class);
-        intent.putExtra("carModel",carModel);
+        intent.putExtra("carModel", changeCarModel(carModel));
         context.startActivity(intent);
+    }
+
+    public String changeCarModel(String model) {
+        if ("CA6457-JCSMBW".equals(model) || "CA6457-JCSMCW".equals(model)) {
+            return "C217_1";
+        } else if ("CA64571-JCHMBW".equals(model) || "CA64571-JCHMCW".equals(model)|| "CA6457-CJCHMBW".equals(model)|| "CA6457-CJCHMCW".equals(model)|| "CA6457-JCHMBW".equals(model)|| "CA6457-JCHMCW".equals(model)) {
+            return "C217_2";
+        } else if ("CA64571-CJCH2MBW".equals(model) || "CA64571-CJCH2MCW".equals(model)|| "CA6457-CJCH2MBW".equals(model)|| "CA6457-CJCH2MCW".equals(model)|| "CA6457-CJCH2MRW".equals(model)) {
+            return "C217_3";
+        } else if ("CA6457A1-JCSAB".equals(model) || "CA6457A-JCSAB".equals(model)|| "CA6457A-JCSAC".equals(model)) {
+            return "C217_4";
+        } else if ("CA6457A1-JCHABW".equals(model) || "CA6457A1-JCHACW".equals(model)|| "CA6457A-JCHABW".equals(model)|| "CA6457A-JCHACW".equals(model)) {
+            return "C217_5";
+        } else if ("CA6457A1-CJCH2ABW".equals(model) || "CA6457A1-CJCH2ACW".equals(model)|| "CA6457A-CJCH2ABW".equals(model)|| "CA6457A-CJCH2ACW".equals(model)) {
+            return "C217_6";
+        } else if ("CA6457A-CJCH4ABW".equals(model) || "CA6457A-CJCH4ACW".equals(model)|| "CA6457A-CJCH4ARW".equals(model)) {
+            return "C217_7";
+        } else {
+            return "C217_1";
+        }
     }
 }

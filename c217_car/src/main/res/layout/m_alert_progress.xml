@@ -16,9 +16,5 @@
             android:text="正在下载"
             android:textColor="#323232"
             android:textSize="14sp" />
-        <com.daimajia.numberprogressbar.NumberProgressBar
-            android:id="@+id/number_progress_bar"
-            style="@style/NumberProgressBar_Default"
-            />
     </LinearLayout>
 </FrameLayout>
