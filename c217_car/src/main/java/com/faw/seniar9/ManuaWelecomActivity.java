@@ -125,6 +125,8 @@ public class ManuaWelecomActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        handler.removeMessages(100001);
+        handler.removeMessages(10000);
     }
 
     public static boolean isServiceRunning(Context context, String ServiceName) {
