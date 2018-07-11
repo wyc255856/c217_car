@@ -188,11 +188,12 @@ public class NativeInterface {
         ManualWebActivity.context.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent();
-// 为Intent设置Action、Category属性
-                intent.setAction(Intent.ACTION_MAIN);// "android.intent.action.MAIN"
-                intent.addCategory(Intent.CATEGORY_HOME); //"android.intent.category.HOME"
-                ManualWebActivity.context.startActivity(intent);
+//                Intent intent = new Intent();
+//// 为Intent设置Action、Category属性
+//                intent.setAction(Intent.ACTION_MAIN);// "android.intent.action.MAIN"
+//                intent.addCategory(Intent.CATEGORY_HOME); //"android.intent.category.HOME"
+//                ManualWebActivity.context.startActivity(intent);
+                ManualWebActivity.context.finish();
             }
         });
         return SharedpreferencesUtil.getCarMode(ManualWebActivity.context);
