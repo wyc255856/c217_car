@@ -72,7 +72,7 @@
 
         <activity
             android:name="com.faw.seniar9.ManuaSetActivity"
-            android:hardwareAccelerated="true"
+            android:configChanges="screenSize|keyboardHidden|orientation"
             android:screenOrientation="landscape"></activity>
         <activity
             android:name="com.faw.seniar9.ManualWebActivity"

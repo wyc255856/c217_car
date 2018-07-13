@@ -327,18 +327,26 @@ public class ManuaSetActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        if (isfirst) {
-            if (isUpload) {
-                DownloadManager.getInstance(this).addObserver(updataWatcher);
-            } else {
-                DownloadManager.getInstance(this).addObserver(dataWatcher);
+
+        new Thread(){
+            @Override
+            public void run() {
+                super.run();
+                if (isfirst) {
+                    if (isUpload) {
+                        DownloadManager.getInstance(context).addObserver(updataWatcher);
+                    } else {
+                        DownloadManager.getInstance(context).addObserver(dataWatcher);
+                    }
+
+
+                    isfirst = false;
+                } else {
+                    DownloadManager.getInstance(context).resume(entry);
+                }
             }
+        }.start();
 
-
-            isfirst = false;
-        } else {
-            DownloadManager.getInstance(this).resume(entry);
-        }
     }
 
     @Override
@@ -357,12 +365,18 @@ public class ManuaSetActivity extends Activity {
     public static DataWatcher dataWatcher = new DataWatcher() {
 
         @Override
-        public void onDataChanged(DownloadEntry data) {
+        public void onDataChanged(final DownloadEntry data) {
             ManuaSetActivity.entry = data;
             Log.e("tag", "data.percent = " + data.percent);
             if (data.percent == 100) {
-                downLoad_progress.setProgress(99);
-                progress_text.setText("99%");
+                context.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        downLoad_progress.setProgress(99);
+                        progress_text.setText("99%");
+                    }
+                });
+
                 ManuaSetActivity.saveFile = new File(LibIOUtil.getDefaultUploadZipPath(context));
                 //ManuaSetActivity.downLoad_progress.setProgress(99);
                 new Thread(new Runnable() {
@@ -408,8 +422,14 @@ public class ManuaSetActivity extends Activity {
                     }
                 }).start();
             } else {
-                downLoad_progress.setProgress(data.percent);
-                progress_text.setText(data.percent + "%");
+                context.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        downLoad_progress.setProgress(data.percent);
+                        progress_text.setText(data.percent + "%");
+                    }
+                });
+
             }
 //                entry = data;
 //                showText.setText(entry.toString());
@@ -420,12 +440,18 @@ public class ManuaSetActivity extends Activity {
     public static DataWatcher updataWatcher = new DataWatcher() {
 
         @Override
-        public void onDataChanged(DownloadEntry data) {
+        public void onDataChanged(final DownloadEntry data) {
             ManuaSetActivity.entry = data;
             Log.e("tag", "data.percent = " + data.percent);
             if (data.percent == 100) {
-                downLoad_progress.setProgress(99);
-                progress_text.setText("99%");
+                context.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        downLoad_progress.setProgress(99);
+                        progress_text.setText("99%");
+                    }
+                });
+
                 ManuaSetActivity.saveFile = new File(LibIOUtil.getDefaultUploadZipPath(context));
                 //ManuaSetActivity.downLoad_progress.setProgress(99);
                 new Thread(new Runnable() {
@@ -472,8 +498,14 @@ public class ManuaSetActivity extends Activity {
                     }
                 }).start();
             } else {
-                downLoad_progress.setProgress(data.percent);
-                progress_text.setText(data.percent + "%");
+                context.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        downLoad_progress.setProgress(data.percent);
+                        progress_text.setText(data.percent + "%");
+                    }
+                });
+
             }
 //                entry = data;
 //                showText.setText(entry.toString());
