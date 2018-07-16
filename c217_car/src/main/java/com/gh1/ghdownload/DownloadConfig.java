@@ -1,4 +1,4 @@
-package com.gh.ghdownload;
+package com.gh1.ghdownload;
 
 /**
  * 

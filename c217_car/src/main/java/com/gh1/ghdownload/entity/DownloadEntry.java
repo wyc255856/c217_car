@@ -1,7 +1,7 @@
-package com.gh.ghdownload.entity;
+package com.gh1.ghdownload.entity;
 
 import com.faw.seniar9.util.LibIOUtil;
-import com.gh.ghdownload.DownloadConfig;
+import com.gh1.ghdownload.DownloadConfig;
 import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;

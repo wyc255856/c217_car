@@ -1,4 +1,4 @@
-package com.gh.ghdownload.test;
+package com.gh1.ghdownload.test;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -9,10 +9,10 @@ import android.widget.TextView;
 
 import com.faw.seniar9.util.LibIOUtil;
 import com.faw.seniar9.util.ManuaConfig;
-import com.gh.ghdownload.DownloadConfig;
-import com.gh.ghdownload.DownloadManager;
-import com.gh.ghdownload.entity.DownloadEntry;
-import com.gh.ghdownload.notify.DataWatcher;
+import com.gh1.ghdownload.DownloadConfig;
+import com.gh1.ghdownload.DownloadManager;
+import com.gh1.ghdownload.entity.DownloadEntry;
+import com.gh1.ghdownload.notify.DataWatcher;
 import com.wyc.c217_car.R;
 
 /**

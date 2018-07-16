@@ -1,4 +1,4 @@
-package com.gh.ghdownload.core;
+package com.gh1.ghdownload.core;
 
 import android.app.Service;
 import android.content.Intent;
@@ -8,13 +8,13 @@ import android.os.Message;
 import android.widget.Toast;
 
 import com.faw.seniar9.util.LibIOUtil;
-import com.gh.ghdownload.DownloadConfig;
-import com.gh.ghdownload.db.DBController;
-import com.gh.ghdownload.entity.DownloadEntry;
-import com.gh.ghdownload.entity.DownloadEntry.DownloadStatus;
-import com.gh.ghdownload.notify.DataChanger;
-import com.gh.ghdownload.utils.Constants;
-import com.gh.ghdownload.utils.Trace;
+import com.gh1.ghdownload.DownloadConfig;
+import com.gh1.ghdownload.db.DBController;
+import com.gh1.ghdownload.entity.DownloadEntry;
+import com.gh1.ghdownload.entity.DownloadEntry.DownloadStatus;
+import com.gh1.ghdownload.notify.DataChanger;
+import com.gh1.ghdownload.utils.Constants;
+import com.gh1.ghdownload.utils.Trace;
 
 import java.io.File;
 import java.util.ArrayList;

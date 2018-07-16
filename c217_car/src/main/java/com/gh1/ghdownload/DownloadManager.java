@@ -1,4 +1,4 @@
-package com.gh.ghdownload;
+package com.gh1.ghdownload;
 
 
 
@@ -6,12 +6,12 @@ package com.gh.ghdownload;
 import android.content.Context;
 import android.content.Intent;
 
-import com.gh.ghdownload.core.DownloadService;
-import com.gh.ghdownload.entity.DownloadEntry;
-import com.gh.ghdownload.notify.DataChanger;
-import com.gh.ghdownload.notify.DataWatcher;
-import com.gh.ghdownload.utils.Constants;
-import com.gh.ghdownload.utils.Trace;
+import com.gh1.ghdownload.core.DownloadService;
+import com.gh1.ghdownload.entity.DownloadEntry;
+import com.gh1.ghdownload.notify.DataChanger;
+import com.gh1.ghdownload.notify.DataWatcher;
+import com.gh1.ghdownload.utils.Constants;
+import com.gh1.ghdownload.utils.Trace;
 
 /**
  * 

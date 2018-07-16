@@ -1,11 +1,11 @@
-package com.gh.ghdownload.core;
+package com.gh1.ghdownload.core;
 
 import com.faw.seniar9.util.LibIOUtil;
-import com.gh.ghdownload.DownloadConfig;
-import com.gh.ghdownload.entity.DownloadEntry;
-import com.gh.ghdownload.entity.DownloadEntry.DownloadStatus;
-import com.gh.ghdownload.utils.Constants;
-import com.gh.ghdownload.utils.Trace;
+import com.gh1.ghdownload.DownloadConfig;
+import com.gh1.ghdownload.entity.DownloadEntry;
+import com.gh1.ghdownload.entity.DownloadEntry.DownloadStatus;
+import com.gh1.ghdownload.utils.Constants;
+import com.gh1.ghdownload.utils.Trace;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;

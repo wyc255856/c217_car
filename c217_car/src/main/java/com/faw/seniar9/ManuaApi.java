@@ -6,7 +6,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.faw.seniar9.util.ManuaConfig;
-import com.gh.ghdownload.DownloadManager;
+import com.gh1.ghdownload.DownloadManager;
 
 
 /**

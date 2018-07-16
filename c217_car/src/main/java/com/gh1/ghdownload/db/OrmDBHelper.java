@@ -1,10 +1,10 @@
-package com.gh.ghdownload.db;
+package com.gh1.ghdownload.db;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 
-import com.gh.ghdownload.entity.DownloadEntry;
+import com.gh1.ghdownload.entity.DownloadEntry;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;

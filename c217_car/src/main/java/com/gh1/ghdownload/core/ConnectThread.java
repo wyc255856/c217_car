@@ -1,7 +1,7 @@
-package com.gh.ghdownload.core;
+package com.gh1.ghdownload.core;
 
-import com.gh.ghdownload.utils.Constants;
-import com.gh.ghdownload.utils.Trace;
+import com.gh1.ghdownload.utils.Constants;
+import com.gh1.ghdownload.utils.Trace;
 
 import java.net.HttpURLConnection;
 import java.net.URL;

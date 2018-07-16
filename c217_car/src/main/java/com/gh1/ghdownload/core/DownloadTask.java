@@ -1,4 +1,4 @@
-package com.gh.ghdownload.core;
+package com.gh1.ghdownload.core;
 
 
 import android.annotation.SuppressLint;
@@ -6,13 +6,13 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 
-import com.gh.ghdownload.DownloadConfig;
-import com.gh.ghdownload.core.ConnectThread.ConnectListener;
-import com.gh.ghdownload.core.DownloadThread.DownloadListener;
-import com.gh.ghdownload.entity.DownloadEntry;
-import com.gh.ghdownload.entity.DownloadEntry.DownloadStatus;
-import com.gh.ghdownload.utils.FileUtils;
-import com.gh.ghdownload.utils.Trace;
+import com.gh1.ghdownload.DownloadConfig;
+import com.gh1.ghdownload.core.ConnectThread.ConnectListener;
+import com.gh1.ghdownload.core.DownloadThread.DownloadListener;
+import com.gh1.ghdownload.entity.DownloadEntry;
+import com.gh1.ghdownload.entity.DownloadEntry.DownloadStatus;
+import com.gh1.ghdownload.utils.FileUtils;
+import com.gh1.ghdownload.utils.Trace;
 
 import java.util.HashMap;
 import java.util.concurrent.ExecutorService;

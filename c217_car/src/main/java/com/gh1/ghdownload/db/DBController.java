@@ -1,9 +1,9 @@
-package com.gh.ghdownload.db;
+package com.gh1.ghdownload.db;
 
 import android.content.Context;
 
-import com.gh.ghdownload.entity.DownloadEntry;
-import com.gh.ghdownload.utils.Trace;
+import com.gh1.ghdownload.entity.DownloadEntry;
+import com.gh1.ghdownload.utils.Trace;
 import com.j256.ormlite.dao.Dao;
 
 import java.sql.SQLException;

@@ -40,7 +40,7 @@
         </activity>
 
         <!--<activity-->
-        <!--android:name="com.gh.ghdownload.test.MainActivity"-->
+        <!--android:name="com.gh1.ghdownload.test.MainActivity"-->
         <!--android:screenOrientation="landscape"-->
 
         <!--android:clearTaskOnLaunch="true"-->
@@ -124,7 +124,7 @@
 
         <!--<service android:name="com.faw.seniar9.TargetService"></service>-->
         <!--<receiver android:name="com.faw.seniar9.PushReciver"></receiver>-->
-        <service android:name="com.gh.ghdownload.core.DownloadService" />
+        <service android:name="com.gh1.ghdownload.core.DownloadService" />
         <!--<receiver android:name="com.faw.seniar9.AppReceiver">-->
             <!--<intent-filter>-->
                 <!--&lt;!&ndash; 一个新应用包已经安装在设备上，数据包括包名（监听所在的app，新安装时，不能接收到这个广播） &ndash;&gt;-->

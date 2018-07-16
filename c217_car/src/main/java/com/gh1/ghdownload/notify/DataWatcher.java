@@ -1,6 +1,6 @@
-package com.gh.ghdownload.notify;
+package com.gh1.ghdownload.notify;
 
-import com.gh.ghdownload.entity.DownloadEntry;
+import com.gh1.ghdownload.entity.DownloadEntry;
 
 import java.util.Observable;
 import java.util.Observer;

@@ -1,4 +1,4 @@
-package com.gh.ghdownload.utils;
+package com.gh1.ghdownload.utils;
 
 import android.os.Environment;
 import android.os.StatFs;
