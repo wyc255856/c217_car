@@ -176,6 +176,9 @@ public class NativeInterface {
 
                 LogUtil.logError("=======goHome========" + getTopActivity(ManualWebActivity.context));
                 if (getTopActivity(ManualWebActivity.context).toString().contains("ManuaSetActivity")) {
+                    while (ManualWebActivity.webView.canGoBack()) {
+                        ManualWebActivity.webView.goBack();
+                    }
                     ManuaSetActivity.context.finish();
                 } else {
                     while (ManualWebActivity.webView.canGoBack()) {
