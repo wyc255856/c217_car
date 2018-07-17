@@ -20,7 +20,7 @@ public class DemoActivity extends Activity {
     }
 
     public void onClick(View view) {
-        ManuaApi.getInstance().openManua(this,"C217_1");
+        ManuaApi.getInstance().openManua(this,"");
     }
 
 }

@@ -61,6 +61,20 @@ public class SharedpreferencesUtil {
                 + PREFERENCES_NAME, Activity.MODE_PRIVATE);
         sharedPreferences.edit().putBoolean(ISFIRST, defValue).commit();
     }
+
+
+    //判断是否第一次登录
+    public static Boolean isGuest(Context context) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(AppUtil.getPackageName(context)
+                + PREFERENCES_NAME, Activity.MODE_PRIVATE);
+        return sharedPreferences.getBoolean("Guest", false);
+    }
+
+    public static void setGuest(Context context, boolean defValue) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(AppUtil.getPackageName(context)
+                + PREFERENCES_NAME, Activity.MODE_PRIVATE);
+        sharedPreferences.edit().putBoolean("Guest", defValue).commit();
+    }
     public static void setModelLocal(Context context, String carMode) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(AppUtil.getPackageName(context)
                 + PREFERENCES_NAME, Activity.MODE_PRIVATE);

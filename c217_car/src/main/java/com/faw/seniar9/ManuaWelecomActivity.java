@@ -146,11 +146,21 @@ public class ManuaWelecomActivity extends BaseActivity {
     }
 
     private void goNext() {
+
+
         boolean isFirst = SharedpreferencesUtil.getIsFirst(ManuaWelecomActivity.this);
 //        if (!isFirst) {
-        Intent intent = new Intent(ManuaWelecomActivity.this, ManualWebActivity.class);
-        startActivity(intent);
-        finish();
+
+        if (SharedpreferencesUtil.isGuest(this)) {
+            Intent intent = new Intent(ManuaWelecomActivity.this, ManualSelecteCarActivity.class);
+            startActivity(intent);
+            finish();
+        } else {
+            Intent intent = new Intent(ManuaWelecomActivity.this, ManualWebActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
 //        } else {
 //            Intent intent = new Intent(ManuaWelecomActivity.this, ManualSelecteCarActivity.class);
 //            startActivity(intent);

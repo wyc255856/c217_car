@@ -400,7 +400,7 @@ public class ManualWebActivity extends Activity {
             //输出文件路径信息
             System.out.println(outPath);
             OutputStream out = new FileOutputStream(outPath);
-            byte[] buf1 = new byte[1024];
+            byte[] buf1 = new byte[8192];
             int len;
             while ((len = in.read(buf1)) > 0) {
                 out.write(buf1, 0, len);

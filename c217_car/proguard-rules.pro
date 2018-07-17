@@ -24,3 +24,4 @@
 -keep class * {
 public private protected *;
 }
+-keep class com.gh1.**{*;}

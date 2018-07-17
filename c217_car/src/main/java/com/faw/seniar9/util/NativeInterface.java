@@ -114,19 +114,25 @@ public class NativeInterface {
 
     @JavascriptInterface
     public void goSetPage() {
-        LogUtil.logError("=======goSetPage========" + "http://www.haoweisys.com/car_engine_C217/pages/set.html?model=" + SharedpreferencesUtil.getCarModel(ManualWebActivity.context) + "&mode=" + SharedpreferencesUtil.getCarMode(ManualWebActivity.context));
         ManualWebActivity.context.runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 Intent intent = new Intent(ManualWebActivity.context, ManuaSetActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 if (SharedpreferencesUtil.getCarMode(ManualWebActivity.context).equals("1")) {
+                    if (SharedpreferencesUtil.isGuest(ManualWebActivity.context)) {
+                        intent.putExtra("url", ManuaConfig.getManuaUrl(ManualWebActivity.context) + "/pages/set.html?model=" + SharedpreferencesUtil.getCarModel(ManualWebActivity.context) + "&mode=" + SharedpreferencesUtil.getCarMode(ManualWebActivity.context) + "&haveLocalPackage=" + SharedpreferencesUtil.getHaveLocal(ManualWebActivity.context) + "&version=v" + SharedpreferencesUtil.getVersion(ManualWebActivity.context) + "&upLoad=" + (ManuaConfig.VERSION.equals(SharedpreferencesUtil.getVersion(ManualWebActivity.context)) ? "0" : "1"));
+                    }else{
+                        intent.putExtra("url", ManuaConfig.getManuaUrl(ManualWebActivity.context) + "/pages/setPhone.html?model=" + SharedpreferencesUtil.getCarModel(ManualWebActivity.context) + "&mode=" + SharedpreferencesUtil.getCarMode(ManualWebActivity.context) + "&haveLocalPackage=" + SharedpreferencesUtil.getHaveLocal(ManualWebActivity.context) + "&version=v" + SharedpreferencesUtil.getVersion(ManualWebActivity.context) + "&upLoad=" + (ManuaConfig.VERSION.equals(SharedpreferencesUtil.getVersion(ManualWebActivity.context)) ? "0" : "1"));
+                    }
 
-                    intent.putExtra("url", ManuaConfig.getManuaUrl(ManualWebActivity.context) + "/pages/setPhone.html?model=" + SharedpreferencesUtil.getCarModel(ManualWebActivity.context) + "&mode=" + SharedpreferencesUtil.getCarMode(ManualWebActivity.context) + "&haveLocalPackage=" + SharedpreferencesUtil.getHaveLocal(ManualWebActivity.context) + "&version=v" + SharedpreferencesUtil.getVersion(ManualWebActivity.context) + "&upLoad=" + (ManuaConfig.VERSION.equals(SharedpreferencesUtil.getVersion(ManualWebActivity.context)) ? "0" : "1"));
 
                 } else {
-                    intent.putExtra("url", "file://" + LibIOUtil.getDefaultPath(ManualWebActivity.context) + SharedpreferencesUtil.getModelLocal(ManualWebActivity.context) + "/pages/set.html" + "?model=" + SharedpreferencesUtil.getCarModel(ManualWebActivity.context) + "&mode=" + SharedpreferencesUtil.getCarMode(ManualWebActivity.context) + "&haveLocalPackage=" + SharedpreferencesUtil.getHaveLocal(ManualWebActivity.context) + "&version=v" + SharedpreferencesUtil.getVersion(ManualWebActivity.context) + "&upLoad=" + (ManuaConfig.VERSION.equals(SharedpreferencesUtil.getVersion(ManualWebActivity.context)) ? "0" : "1"));
-
+                    if (SharedpreferencesUtil.isGuest(ManualWebActivity.context)) {
+                        intent.putExtra("url", "file://" + LibIOUtil.getDefaultPath(ManualWebActivity.context) + SharedpreferencesUtil.getModelLocal(ManualWebActivity.context) + "/pages/set.html" + "?model=" + SharedpreferencesUtil.getCarModel(ManualWebActivity.context) + "&mode=" + SharedpreferencesUtil.getCarMode(ManualWebActivity.context) + "&haveLocalPackage=" + SharedpreferencesUtil.getHaveLocal(ManualWebActivity.context) + "&version=v" + SharedpreferencesUtil.getVersion(ManualWebActivity.context) + "&upLoad=" + (ManuaConfig.VERSION.equals(SharedpreferencesUtil.getVersion(ManualWebActivity.context)) ? "0" : "1"));
+                    }else {
+                        intent.putExtra("url", "file://" + LibIOUtil.getDefaultPath(ManualWebActivity.context) + SharedpreferencesUtil.getModelLocal(ManualWebActivity.context) + "/pages/setPhone.html.html" + "?model=" + SharedpreferencesUtil.getCarModel(ManualWebActivity.context) + "&mode=" + SharedpreferencesUtil.getCarMode(ManualWebActivity.context) + "&haveLocalPackage=" + SharedpreferencesUtil.getHaveLocal(ManualWebActivity.context) + "&version=v" + SharedpreferencesUtil.getVersion(ManualWebActivity.context) + "&upLoad=" + (ManuaConfig.VERSION.equals(SharedpreferencesUtil.getVersion(ManualWebActivity.context)) ? "0" : "1"));
+                    }
                 }
                 ManualWebActivity.context.startActivity(intent);
             }

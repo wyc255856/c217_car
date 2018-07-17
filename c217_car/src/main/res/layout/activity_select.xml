@@ -65,7 +65,7 @@
             android:id="@+id/spinner_layout"
             android:layout_width="266.6dp"
             android:layout_height="wrap_content"
-            android:background="@mipmap/m_spinner_bg"
+            android:background="@mipmap/m_spinner_item_bg"
             android:orientation="vertical"
             android:visibility="gone">
 
