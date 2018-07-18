@@ -2,6 +2,7 @@ package com.faw.seniar9;
 
 import android.content.Context;
 import android.content.Intent;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 
@@ -216,7 +217,7 @@ public class ManuaApi {
     }
 
     public void openManua(Context context, String carModel) {
-        if ("".equals(carModel)) {
+        if (TextUtils.isEmpty(carModel)) {
             SharedpreferencesUtil.setGuest(context, true);
         }
         Intent intent = new Intent(context, ManuaWelecomActivity.class);
