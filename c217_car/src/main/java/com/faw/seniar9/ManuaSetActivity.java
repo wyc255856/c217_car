@@ -96,33 +96,14 @@ public class ManuaSetActivity extends Activity {
         error_alert = findViewById(R.id.error_alert);
         webView.getSettings().setAllowFileAccess(true);
         webView.setBackgroundColor(0);
+        webView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+        webView.setBackgroundResource(R.mipmap.m_home_bg);
         webView.setWebChromeClient(new WebChromeClient() {
 
 
             @Override
-            public View getVideoLoadingProgressView() {
-                FrameLayout frameLayout = new FrameLayout(ManualWebActivity.context);
-                frameLayout.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT));
-                return frameLayout;
-            }
-
-            @Override
-            public void onShowCustomView(View view, CustomViewCallback callback) {
-                showCustomView(view, callback);
-            }
-
-            @Override
-            public void onHideCustomView() {
-                hideCustomView();
-            }
-
-            @Override
             public void onProgressChanged(WebView view, int newProgress) {
                 super.onProgressChanged(view, newProgress);
-//                if (newProgress == 100) {
-//                    error_view.setVisibility(View.GONE);
-//                    isError = false;
-//                }
             }
         });
         url = getIntent().getStringExtra("url");
@@ -132,7 +113,7 @@ public class ManuaSetActivity extends Activity {
                 super.onPageStarted(view, url, favicon);
 //                error_view.setVisibility(View.VISIBLE);
 //                error_alert.setVisibility(View.GONE);
-                webView.setEnabled(false);// 当加载网页的时候将网页进行隐藏
+//                webView.setEnabled(false);// 当加载网页的时候将网页进行隐藏
             }
 
             @Override
@@ -140,11 +121,11 @@ public class ManuaSetActivity extends Activity {
                 super.onReceivedError(view, request, error);
                 isError = true;
                 if (isError) {
-                    error_view.setVisibility(View.VISIBLE);
-                    error_alert.setVisibility(View.VISIBLE);
-                    webView.setEnabled(true);// 当加载网页的时候将网页进行隐藏
+//                    error_view.setVisibility(View.VISIBLE);
+//                    error_alert.setVisibility(View.VISIBLE);
+//                    webView.setEnabled(true);// 当加载网页的时候将网页进行隐藏
                 } else {
-                    error_view.setVisibility(View.GONE);
+//                    error_view.setVisibility(View.GONE);
                 }
             }
 
@@ -155,16 +136,18 @@ public class ManuaSetActivity extends Activity {
                 super.onPageFinished(view, url);
 
                 if (isError) {
-                    error_view.setVisibility(View.VISIBLE);
-                    error_alert.setVisibility(View.VISIBLE);
-                    webView.setEnabled(true);// 当加载网页的时候将网页进行隐藏
+//                    error_view.setVisibility(View.VISIBLE);
+//                    error_alert.setVisibility(View.VISIBLE);
+//                    webView.setEnabled(true);// 当加载网页的时候将网页进行隐藏
                 } else {
-                    error_view.setVisibility(View.GONE);
+//                    error_view.setVisibility(View.GONE);
                 }
             }
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
+
+
                 view.loadUrl(url);
 //                if ("0".equals(SharedpreferencesUtil.getCarMode(ManualWebActivity.this))) {
 //                    LogUtil.logError("ManuaConfig.getManuaUrl(context) = " + ManuaConfig.getManuaUrl(context));
@@ -197,7 +180,7 @@ public class ManuaSetActivity extends Activity {
         webView.getSettings().setAllowFileAccessFromFileURLs(true);
         webView.getSettings().setAllowUniversalAccessFromFileURLs(true);
 
-
+        webView.getSettings().setDatabaseEnabled(true);
         webView.getSettings().setDomStorageEnabled(true);
         webView.getSettings().setAppCacheMaxSize(1024 * 1024 * 8);
         String appCachePath = getApplicationContext().getCacheDir().getAbsolutePath();
@@ -218,8 +201,8 @@ public class ManuaSetActivity extends Activity {
         findViewById(R.id.reload_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                error_view.setVisibility(View.VISIBLE);
-                error_alert.setVisibility(View.GONE);
+//                error_view.setVisibility(View.VISIBLE);
+//                error_alert.setVisibility(View.GONE);
                 isError = false;
                 webView.reload();
             }
@@ -309,9 +292,7 @@ public class ManuaSetActivity extends Activity {
         switch (keyCode) {
             case KeyEvent.KEYCODE_BACK:
                 /** 回退键 事件处理 优先级:视频播放全屏-网页回退-关闭页面 */
-                if (customView != null) {
-                    hideCustomView();
-                } else if (webView.canGoBack()) {
+                if (webView.canGoBack()) {
                     webView.goBack();
                 } else {
                     finish();
@@ -328,7 +309,7 @@ public class ManuaSetActivity extends Activity {
     protected void onResume() {
         super.onResume();
 
-        new Thread(){
+        new Thread() {
             @Override
             public void run() {
                 super.run();
@@ -359,7 +340,7 @@ public class ManuaSetActivity extends Activity {
     protected void onDestroy() {
         super.onDestroy();
         DownloadManager.getInstance(this).pause(entry);
-        window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+//        window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
 
     public static DataWatcher dataWatcher = new DataWatcher() {
@@ -392,7 +373,7 @@ public class ManuaSetActivity extends Activity {
                         }
 //                        ZipUtil.unpack(saveFile, new File(LibIOUtil.getDefaultPath(context)), Charset.forName("GBK"));
                         try {
-                            ManualWebActivity.unZipFiles(saveFile,LibIOUtil.getDefaultPath(context));
+                            ManualWebActivity.unZipFiles(saveFile, LibIOUtil.getDefaultPath(context));
                             ((Activity) context).runOnUiThread(new Runnable() {
 
                                 @Override
@@ -467,7 +448,7 @@ public class ManuaSetActivity extends Activity {
                             return;
                         }
                         try {
-                            ManualWebActivity.unZipFiles(saveFile,LibIOUtil.getDefaultPath(context));
+                            ManualWebActivity.unZipFiles(saveFile, LibIOUtil.getDefaultPath(context));
                             ((Activity) context).runOnUiThread(new Runnable() {
 
                                 @Override
@@ -511,4 +492,5 @@ public class ManuaSetActivity extends Activity {
 //                showText.setText(entry.toString());
         }
     };
+
 }

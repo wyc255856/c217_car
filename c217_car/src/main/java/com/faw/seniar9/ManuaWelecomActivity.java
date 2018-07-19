@@ -9,6 +9,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.TextView;
 
@@ -90,17 +91,7 @@ public class ManuaWelecomActivity extends BaseActivity {
 
 
     private void goMainActivity() {
-        new Handler() {
-            public void handleMessage(Message msg) {
-                manua_mzsm.setVisibility(View.VISIBLE);
-                handler.sendEmptyMessage(100001);
-
-//                Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
-//                startActivity(intent);
-//                finish();
-            }
-
-        }.sendEmptyMessageDelayed(0, 2000);
+        handler.sendEmptyMessageDelayed(0, 2000);
     }
 
     @Override
@@ -127,6 +118,7 @@ public class ManuaWelecomActivity extends BaseActivity {
         super.onDestroy();
         handler.removeMessages(100001);
         handler.removeMessages(10000);
+        handler.removeMessages(0);
     }
 
     public static boolean isServiceRunning(Context context, String ServiceName) {
@@ -150,7 +142,8 @@ public class ManuaWelecomActivity extends BaseActivity {
 
         boolean isFirst = SharedpreferencesUtil.getIsFirst(ManuaWelecomActivity.this);
 //        if (!isFirst) {
-
+        handler.removeMessages(100001);
+        handler.removeMessages(10000);
         if (SharedpreferencesUtil.isGuest(this)) {
             Intent intent = new Intent(ManuaWelecomActivity.this, ManualSelecteCarActivity.class);
             startActivity(intent);
@@ -168,12 +161,37 @@ public class ManuaWelecomActivity extends BaseActivity {
 //        }
     }
 
+    public boolean onPause = false;
+
+    @Override
+    public void onPause() {
+        LogUtil.logError("============onPause==============");
+        super.onPause();
+        onPause = true;
+        handler.removeMessages(100001);
+        handler.removeMessages(10000);
+        handler.removeMessages(0);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (onPause) {
+            onPause = false;
+            handler.sendEmptyMessageDelayed(100001, 1000);
+        }
+    }
+
+
     Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
 
             super.handleMessage(msg);
-            if (msg.what == 10000) {
+            if (msg.what == 0) {
+                manua_mzsm.setVisibility(View.VISIBLE);
+                handler.sendEmptyMessage(100001);
+            } else if (msg.what == 10000) {
                 goNext();
             } else if (msg.what == 100001) {
                 if (time == 0) {
@@ -190,4 +208,24 @@ public class ManuaWelecomActivity extends BaseActivity {
             }
         }
     };
+
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        if (keyCode == KeyEvent.KEYCODE_BACK
+                && event.getRepeatCount() == 0) {
+//
+            handler.removeMessages(100001);
+            handler.removeMessages(10000);
+            handler.removeMessages(0);
+            finish();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    public void removeHandler() {
+
+    }
 }

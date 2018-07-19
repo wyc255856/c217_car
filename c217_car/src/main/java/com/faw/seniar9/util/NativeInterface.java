@@ -6,6 +6,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.webkit.JavascriptInterface;
+import android.webkit.WebView;
 import android.widget.Toast;
 
 import com.faw.seniar9.ManuaApi;
@@ -134,6 +135,11 @@ public class NativeInterface {
                         intent.putExtra("url", "file://" + LibIOUtil.getDefaultPath(ManualWebActivity.context) + SharedpreferencesUtil.getModelLocal(ManualWebActivity.context) + "/pages/setPhone.html.html" + "?model=" + SharedpreferencesUtil.getCarModel(ManualWebActivity.context) + "&mode=" + SharedpreferencesUtil.getCarMode(ManualWebActivity.context) + "&haveLocalPackage=" + SharedpreferencesUtil.getHaveLocal(ManualWebActivity.context) + "&version=v" + SharedpreferencesUtil.getVersion(ManualWebActivity.context) + "&upLoad=" + (ManuaConfig.VERSION.equals(SharedpreferencesUtil.getVersion(ManualWebActivity.context)) ? "0" : "1"));
                     }
                 }
+
+//                intent.putExtra("url", ManuaConfig.getManuaUrl(ManualWebActivity.context) + "?upLoad=" + (ManuaConfig.VERSION.equals(SharedpreferencesUtil.getVersion(ManualWebActivity.context)) ? "0" : "0"));
+                intent.putExtra("url", ManuaConfig.getManuaUrl(ManualWebActivity.context) + "/pages/set.html?model=" + SharedpreferencesUtil.getCarModel(ManualWebActivity.context) + "&mode=" + SharedpreferencesUtil.getCarMode(ManualWebActivity.context) + "&haveLocalPackage=" + SharedpreferencesUtil.getHaveLocal(ManualWebActivity.context) + "&version=v" + SharedpreferencesUtil.getVersion(ManualWebActivity.context) + "&upLoad=" + (ManuaConfig.VERSION.equals(SharedpreferencesUtil.getVersion(ManualWebActivity.context)) ? "0" : "1"));
+
+
                 ManualWebActivity.context.startActivity(intent);
             }
         });

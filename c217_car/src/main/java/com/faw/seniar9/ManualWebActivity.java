@@ -291,8 +291,9 @@ public class ManualWebActivity extends Activity {
 //        webView.loadUrl("file:///android_asset/index.html");
 
         if ("0".equals(SharedpreferencesUtil.getCarMode(this))) {
-            LogUtil.logError("ManuaConfig.getManuaUrl(context) = " + "file://" + LibIOUtil.getDefaultPath(context) + SharedpreferencesUtil.getModelLocal(ManualWebActivity.this) + "/index.html" + "?upLoad=" + (ManuaConfig.VERSION.equals(SharedpreferencesUtil.getVersion(this)) ? "0" : "1"));
-            webView.loadUrl("file://" + LibIOUtil.getDefaultPath(context) + SharedpreferencesUtil.getModelLocal(ManualWebActivity.this) + "/index.html" + "?upLoad=" + (ManuaConfig.VERSION.equals(SharedpreferencesUtil.getVersion(this)) ? "0" : "1"));
+//            + "?upLoad=" + (ManuaConfig.VERSION.equals(SharedpreferencesUtil.getVersion(this)) ? "0" : "1")
+            LogUtil.logError("ManuaConfig.getManuaUrl(context) = " + "file://" + LibIOUtil.getDefaultPath(context) + SharedpreferencesUtil.getModelLocal(ManualWebActivity.this) + "/index.html");
+            webView.loadUrl("file://" + LibIOUtil.getDefaultPath(context) + SharedpreferencesUtil.getModelLocal(ManualWebActivity.this) + "/index.html"  );
         } else {
             LogUtil.logError("ManuaConfig.getManuaUrl(context) = " + ManuaConfig.getManuaUrl(context));
 //            webView.loadUrl("file://" + LibIOUtil.getDefaultPath(context) + "C217_1/index.html");
